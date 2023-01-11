@@ -24,6 +24,6 @@ class HelloController {
     @GetMapping("hello-string")
     @ResponseBody
     fun helloString(@RequestParam(name = "name")name:String, model:Model):String {
-        return "hello~" + name
+        return "hello" + name
     }
 }
