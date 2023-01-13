@@ -22,6 +22,10 @@ class MemoryMemberRepository:MemberRepository {
         return Optional.ofNullable(store.get(id))
     }
 
+    override fun findByName(name: String): Optional<Member> {
+        TODO("Not yet implemented")
+    }
+
     /*
     override fun findByName(name: String): Optional<Member> {
         store.values.stream()
