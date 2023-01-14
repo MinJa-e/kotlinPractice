@@ -11,7 +11,7 @@ class MemberService {
 
     fun join(member:Member):Long {
         var result:Optional<Member> = memberRepository.findByName(member.name)
-        result.ifPresent
+        result.ifPresent()
 
 
         memberRepository.save(member)
