@@ -1,12 +1,14 @@
 package com.kotlinPractice.kotlinPractice.repository
 
 import com.kotlinPractice.kotlinPractice.domain.Member
+import org.springframework.stereotype.Repository
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 import kotlin.collections.Map
 import kotlin.system.measureTimeMillis
 
+@Repository
 class MemoryMemberRepository:MemberRepository {
 
     var store = HashMap<Long, Member>()
