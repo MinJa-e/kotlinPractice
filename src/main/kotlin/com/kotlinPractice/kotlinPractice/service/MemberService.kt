@@ -19,9 +19,7 @@ class MemberService {
 
     fun join(member:Member):Long {
         memberRepository.findByName(member.name)
-            .ifPresent(m -> {
-                throw JVMSupport.ensureWithIllegalStateException()
-        })
+            .let { throw IllegalStateException("이미존재함") }
 
         memberRepository.save(member)
 
