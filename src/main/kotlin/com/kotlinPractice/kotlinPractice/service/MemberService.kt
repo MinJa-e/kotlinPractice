@@ -3,6 +3,7 @@ package com.kotlinPractice.kotlinPractice.service
 import com.kotlinPractice.kotlinPractice.domain.Member
 import com.kotlinPractice.kotlinPractice.repository.MemberRepository
 import com.kotlinPractice.kotlinPractice.repository.MemoryMemberRepository
+import jdk.jfr.internal.JVMSupport
 import org.springframework.stereotype.Service
 import java.util.Optional
 
@@ -15,14 +16,15 @@ class MemberService {
         this.memberRepository = memberRepository
     }
 
-    /*
-    fun join(member:Member):Long {
-        var result:Optional<Member> = memberRepository.findByName(member.name)
-        result.ifPresent()
 
+    fun join(member:Member):Long {
+        memberRepository.findByName(member.name)
+            .ifPresent(m -> {
+                throw JVMSupport.ensureWithIllegalStateException()
+        })
 
         memberRepository.save(member)
 
         return member.id
-    }*/
+    }
 }
