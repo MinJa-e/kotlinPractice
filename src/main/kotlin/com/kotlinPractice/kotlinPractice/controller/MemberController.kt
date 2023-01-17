@@ -2,14 +2,15 @@ package com.kotlinPractice.kotlinPractice.controller
 
 import com.kotlinPractice.kotlinPractice.service.MemberService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.GetMapping
 
-class MemberController {
+@Controller
+class MemberController(private val memberService: MemberService) {
 
-
-    private lateinit var memberService:MemberService
-
-    @Autowired
-    fun MemberController(memberService:MemberService){
-        this.memberService = memberService
+    @GetMapping("/members/new")
+    fun createForm():String{
+        return "members/createMemberForm"
     }
+
 }
