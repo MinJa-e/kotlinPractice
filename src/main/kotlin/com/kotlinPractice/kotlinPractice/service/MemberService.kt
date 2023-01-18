@@ -18,11 +18,15 @@ class MemberService {
 
 
     fun join(member:Member):Long {
-        memberRepository.findByName(member.name)
-            .let { throw IllegalStateException("이미존재함") }
+        validateDuplicateMember(member)
 
         memberRepository.save(member)
 
         return member.id
+    }
+
+    private fun validateDuplicateMember(member:Member){
+        memberRepository.findByName(member.name)
+            .let { throw IllegalStateException("이미존재함") }
     }
 }
