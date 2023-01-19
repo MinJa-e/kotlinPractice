@@ -5,8 +5,6 @@ import org.springframework.stereotype.Repository
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
-import kotlin.collections.Map
-import kotlin.system.measureTimeMillis
 
 @Repository
 class MemoryMemberRepository:MemberRepository {
@@ -25,15 +23,10 @@ class MemoryMemberRepository:MemberRepository {
     }
 
     override fun findByName(name: String): Optional<Member> {
-        TODO("Not yet implemented")
+        return store.values.stream()
+            .filter{it.name.equals(name)}.findAny()
+            //.findAny()
     }
-
-    /*
-    override fun findByName(name: String): Optional<Member> {
-        store.values.stream()
-            .filter(member.)
-            .findAny()
-    }*/
 
     override fun findAll(): List<Member> {
         return ArrayList(store.values)

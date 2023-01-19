@@ -19,6 +19,9 @@ class MemberController(private val memberService: MemberService) {
     fun create(form:MemberForm):String{
         var member:Member = Member()
         member.name = form.name
+
+        println("member = "+member.name)
+
         memberService.join(member)
         return "redirect:/"
     }
