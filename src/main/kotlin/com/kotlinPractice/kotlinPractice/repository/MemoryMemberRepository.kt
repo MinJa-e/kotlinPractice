@@ -25,7 +25,7 @@ class MemoryMemberRepository:MemberRepository {
     override fun findByName(name: String): Optional<Member> {
         return store.values.stream()
             .filter{it.name.equals(name)}.findAny()
-            //.findAny()
+            //.findAny()/
     }
 
     override fun findAll(): List<Member> {
