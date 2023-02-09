@@ -9,7 +9,7 @@ import java.util.Optional
 class MemberService(private val memberRepository: MemberRepository) {
 
     fun join(member:Member):Long {
-        validateDuplicateMember(member)
+        //validateDuplicateMember(member)
 
         memberRepository.save(member)
 

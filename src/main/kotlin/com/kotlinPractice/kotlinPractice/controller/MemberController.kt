@@ -4,6 +4,7 @@ import com.kotlinPractice.kotlinPractice.domain.Member
 import com.kotlinPractice.kotlinPractice.service.MemberService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 
@@ -24,6 +25,13 @@ class MemberController(private val memberService: MemberService) {
 
         memberService.join(member)
         return "redirect:/"
+    }
+
+    @GetMapping
+    fun list(model: Model):String {
+        var members:List<Member> = memberService.findMembers()
+        model.addAttribute("members", members)
+        return "members/memberList"
     }
 
 }
